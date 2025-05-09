@@ -1,0 +1,70 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">Payroll</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Payroll</h4>
+        <div class="text-end">
+          <a routerLink="/payroll/create" class="btn btn-primary"><i class="feather icon-plus"></i> Add allowance</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="form-group">
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Search..." (keyup)='filterDatatable($event)'>
+            </div>
+          </div>
+          <ngx-datatable
+            class="bootstrap"
+            [rows]="rows"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [externalPaging]="true"
+            [count]="page.totalElements"
+            [offset]="page.pageNumber"
+            [limit]="page.size"
+            (page)="getData($event)"
+          >
+
+            <ngx-datatable-column name="Employee name" prop="employeeName"></ngx-datatable-column>
+            <ngx-datatable-column name="Payroll Month" prop="payrollMonth"></ngx-datatable-column>
+            <ngx-datatable-column name="Basic Salary" prop="basicSalary"></ngx-datatable-column>
+            <ngx-datatable-column name="Total allowances" prop="totalAllowances"></ngx-datatable-column>
+            <ngx-datatable-column name="Total deductions" prop="totalDeductions"></ngx-datatable-column>
+            <ngx-datatable-column name="Gross pay" prop="grossPay"></ngx-datatable-column>
+            <ngx-datatable-column name="Net pay" prop="netPay"></ngx-datatable-column>
+            <ngx-datatable-column name="Generated at" prop="generatedAt">
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{ payrollTemp[rowIndex].generatedAt | date:'longDate' }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" prop="id" [width]="80">
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <a routerLink="/payroll/view-single/" class="text-success" placement="top" ngbTooltip="View">
+                  <i class="feather icon-eye "></i></a>
+                <a  class="text-danger" placement="top" ngbTooltip="Delete">
+                  <i class="feather icon-trash-2"></i></a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

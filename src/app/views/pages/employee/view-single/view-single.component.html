@@ -1,0 +1,74 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/employee/view">Employee</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Employee</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employee</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="employee != null">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-bordered">
+          <tbody>
+          <tr>
+            <td class="bg-grey">Full Name</td>
+            <td class="bg-white">{{ employee.fullName }}</td>
+          </tr>
+
+          <tr>
+            <td class="bg-grey">Job Title</td>
+            <td class="bg-white">{{ employee.jobTitle }}</td>
+          </tr>
+          <tr>
+            <td class="bg-grey">Employee Code</td>
+            <td class="bg-white">{{ employee.employeeCode }}</td>
+
+          </tr>
+          <tr>
+            <td class="bg-grey">Hire Date</td>
+            <td class="bg-white">{{ employee.hireDate }}</td>
+          </tr>
+          <tr>
+            <td class="bg-grey">Date of Birth</td>
+            <td class="bg-white">{{ employee.birthDate }}</td>
+          </tr>
+
+          <tr>
+            <td class="bg-grey">Email Address</td>
+            <td class="bg-white">{{ employee.email }}</td>
+          </tr>
+
+          <tr>
+            <td class="bg-grey">Phone Number</td>
+            <td class="bg-white">{{ employee.phone }}</td>
+          </tr>
+          <tr>
+            <td class="bg-grey">Employee Address</td>
+            <td class="bg-white">{{ employee.address }}</td>
+          </tr>
+
+          <tr>
+            <td class="bg-grey">Employee Type</td>
+            <td class="bg-white">{{ employee.employmentType }}</td>
+          </tr>
+          <tr>
+              <td class="bg-grey">Work Location</td>
+              <td class="bg-white">{{ employee.workLocation }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

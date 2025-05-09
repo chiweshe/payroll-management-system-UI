@@ -1,0 +1,68 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">Tax Slabs</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Tax Slabs</h4>
+        <div class="text-end">
+          <a routerLink="/tax/create" class="btn btn-primary"><i class="feather icon-plus"></i> Add tax</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="form-group">
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="" (keyup)='filterDatatable($event)'>
+            </div>
+          </div>
+          <ngx-datatable
+            class="bootstrap"
+            [rows]="rows"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [externalPaging]="true"
+            [count]="page.totalElements"
+            [offset]="page.pageNumber"
+            [limit]="page.size"
+            (page)="getData($event)"
+          >
+            <ngx-datatable-column name="Lower bound " prop="lowerBound"></ngx-datatable-column>
+            <ngx-datatable-column name="Upper bound " prop="upperBound"></ngx-datatable-column>
+            <ngx-datatable-column name="Tax (%)" prop="rate"></ngx-datatable-column>
+            <ngx-datatable-column name="Fixed Amount " prop="fixedAmount" ></ngx-datatable-column>
+            <ngx-datatable-column name="Date Created" prop="dateCreated">
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{ taxTemp[rowIndex].dateCreated | date:'longDate' }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" prop="id" [width]="80">
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <a routerLink="/tax/view-single/" class="text-success" placement="top" ngbTooltip="V">
+                  <i class="feather icon-eye "></i></a>
+                <a class="text-primary" placement="top" ngbTooltip="Update">
+                  <i class="feather icon-edit "></i></a>
+                <a  class="text-danger" placement="top" ngbTooltip="Delete">
+                  <i class="feather icon-trash-2"></i></a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
