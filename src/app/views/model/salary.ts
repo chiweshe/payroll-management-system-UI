@@ -7,4 +7,5 @@ export interface Salary{
   status: string;
   dateCreated: string;
   active: boolean;
+  employeeId: number;
 }

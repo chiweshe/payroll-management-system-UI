@@ -1,1 +1,88 @@
-<p>create works!</p>
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/salary/view">Salary Structure</a></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Salary Structure</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" (ngSubmit)="formSubmit()" [formGroup]="validationForm">
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+              <label for="employeeId" class="form-label">Employee <span class="important">*</span></label>
+              <select name = "employeeId" class="form-control" id="employeeId" formControlName="employeeId"
+                      [ngClass]="{'is-invalid': isFormSubmitted && form.employeeId.errors}"
+                      placeholder="Select Employee">
+                <option value="" disabled>--Select Employee--</option>
+                <option [ngValue]="employee.id" *ngFor="let employee of employeeList">
+                  {{employee.fullName}}
+                </option>
+              </select>
+              <div *ngIf="isFormSubmitted && form.employeeId.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="basicSalary" class="form-label">Basic Salary <span class="important">*</span></label>
+              <input type="number" class="form-control" id="basicSalary" formControlName="basicSalary"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.basicSalary.errors}" placeholder="Basic Salary">
+              <div *ngIf="isFormSubmitted && form.basicSalary.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="bonus" class="form-label">Bonus<span class="important">*</span></label>
+              <input type="text" class="form-control" id="bonus" formControlName="bonus"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.bonus.errors}" placeholder="Bonus">
+            </div>
+
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="effectiveFrom" class="form-label">Effective From<span class="important">*</span></label>
+              <input type="date" class="form-control" id="effectiveFrom" formControlName="effectiveFrom"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.effectiveFrom.errors}" placeholder="Effective From">
+              <div *ngIf="isFormSubmitted && form.effectiveFrom.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="active" class="form-label">Active<span class="important">*</span></label>
+              <select class="form-control" id="active" formControlName="active"
+                      [ngClass]="{'is-invalid': isFormSubmitted && form.active.errors}">
+                <option value="" disabled selected>Select an option</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              <div *ngIf="isFormSubmitted && form.taxable.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" [disabled]="validationForm.invalid">
+              <i class="feather icon-save"></i> Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

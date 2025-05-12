@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {LayoutModule} from "../../layout/layout.module";
+import { CreateBulkComponent } from './create-bulk/create-bulk.component';
 
 
 
@@ -22,6 +23,10 @@ const routes: Routes = [
         component: CreateComponent,
       },
       {
+        path: 'create-bulk',
+        component: CreateBulkComponent,
+      },
+      {
         path: 'view',
         component: ViewComponent,
       },
@@ -32,7 +37,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     CreateComponent,
-    ViewComponent
+    ViewComponent,
+    CreateBulkComponent
 
   ],
   imports: [
