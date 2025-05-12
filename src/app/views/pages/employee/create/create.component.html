@@ -1,1 +1,155 @@
-<p>create works!</p>
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/employee/view">Employee</a></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Employee</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" (ngSubmit)="formSubmit()" [formGroup]="validationForm">
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="firstName" class="form-label">Firstname<span class="important">*</span></label>
+              <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.firstName.errors}" placeholder="First name">
+              <div *ngIf="isFormSubmitted && form.firstName.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="lastName" class="form-label">Lastname<span class="important">*</span></label>
+              <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.lastName.errors}" placeholder="Last name">
+              <div *ngIf="isFormSubmitted && form.lastName.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="email" class="form-label">Email<span class="important">*</span></label>
+              <input type="email" class="form-control" id="email" formControlName="email"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.email.errors}" placeholder="Email">
+              <div *ngIf="isFormSubmitted && form.email.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="phone" class="form-label">Phone<span class="important">*</span></label>
+              <input type="text" class="form-control" id="phone" formControlName="phone"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.phone.errors}" placeholder="Phone number">
+              <div *ngIf="isFormSubmitted && form.phone.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="employeeCode" class="form-label">Employee Code<span class="important">*</span></label>
+              <input type="text" class="form-control" id="employeeCode" formControlName="employeeCode"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.employeeCode.errors}" placeholder="Employee Code">
+              <div *ngIf="isFormSubmitted && form.employeeCode.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="address" class="form-label">Address<span class="important">*</span></label>
+              <input type="text" class="form-control" id="address" formControlName="address"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.address.errors}" placeholder="Address">
+              <div *ngIf="isFormSubmitted && form.address.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="birthDate" class="form-label">Date of Birth<span class="important">*</span></label>
+              <input type="date" class="form-control" id="birthDate" formControlName="birthDate"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.birthDate.errors}" placeholder="Date of Birth">
+              <div *ngIf="isFormSubmitted && form.birthDate.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="hireDate" class="form-label">Hire Date<span class="important">*</span></label>
+              <input type="date" class="form-control" id="hireDate" formControlName="hireDate"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.hireDate.errors}" placeholder="Hire Date">
+              <div *ngIf="isFormSubmitted && form.hireDate.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="workLocation" class="form-label">Work Location<span class="important">*</span></label>
+              <input type="text" class="form-control" id="workLocation" formControlName="workLocation"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.workLocation.errors}" placeholder="Work Location">
+              <div *ngIf="isFormSubmitted && form.workLocation.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="jobTitle" class="form-label">Hire Date<span class="important">*</span></label>
+              <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.jobTitle.errors}" placeholder="Title">
+              <div *ngIf="isFormSubmitted && form.jobTitle.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="employmentType" class="form-label">Employment Type <span class="important">*</span></label>
+              <select class="form-control" id="employmentType" formControlName="employmentType"
+                      [ngClass]="{'is-invalid': isFormSubmitted && form.employmentType.errors}">
+                <option value="" disabled selected>---Select an option---</option>
+                <option value="PERMANENT">PERMANENT</option>
+                <option value="CONTRACT">CONTRACT</option>
+              </select>
+              <div *ngIf="isFormSubmitted && form.employmentType.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="departmentId" class="form-label">Department <span class="important">*</span></label>
+              <select name = "departmentId" class="form-control" id="departmentId" formControlName="departmentId"
+                      [ngClass]="{'is-invalid': isFormSubmitted && form.departmentId.errors}"
+                      placeholder="Select Department">
+                <option value="" disabled>--Select Department--</option>
+                <option [ngValue]="department.id" *ngFor="let department of departmentList">
+                  {{department.name}}
+                </option>
+              </select>
+              <div *ngIf="isFormSubmitted && form.department.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" [disabled]="validationForm.invalid">
+              <i class="feather icon-save"></i> Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

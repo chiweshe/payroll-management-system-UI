@@ -28,7 +28,7 @@ export class EmployeeService {
 
   public viewList(): Observable<any> {
 
-    return this.http.get<any>(`${this.completeBasePath}`, this.requestOptions).pipe(
+    return this.http.get<any>(`${this.completeBasePath}/all`, this.requestOptions).pipe(
       map((data) => {
         return data;
       }), catchError(error => {
@@ -41,7 +41,10 @@ export class EmployeeService {
                 email:string, phone: string, address: string,employeeCode: string, hireDate:string, jobTitle: string,
                 employmentType:string, workLocation: string, departmentId: number ): Observable<any> {
 
-    var postData = JSON.stringify({name: name});
+    var postData = JSON.stringify({firstName: firstName,
+      lastName:lastName, birthDate:birthDate, email:email, phone: phone, address:address, employeeCode:employeeCode,
+      hireDate:hireDate, jobTitle:jobTitle,  employmentType:employmentType, workLocation:workLocation, departmentId:departmentId
+    });
     return this.http.post<any>(`${this.completeBasePath}`, postData, this.requestOptions).pipe(
       map((data) => {
         return data;

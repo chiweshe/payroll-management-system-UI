@@ -28,7 +28,7 @@ export class DepartmentService {
 
   public viewList(): Observable<any> {
 
-    return this.http.get<any>(`${this.completeBasePath}`, this.requestOptions).pipe(
+    return this.http.get<any>(`${this.completeBasePath}/list`, this.requestOptions).pipe(
       map((data) => {
         return data;
       }), catchError(error => {

@@ -1,1 +1,55 @@
-<p>create works!</p>
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/payroll/view">Payroll</a></li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Generate Payroll</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" (ngSubmit)="formSubmit()" [formGroup]="validationForm">
+          <div class="row">
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="payrollMonth" class="form-label">Payroll Month <span class="important">*</span></label>
+              <input type="month" class="form-control" id="payrollMonth" formControlName="payrollMonth"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.payrollMonth.errors}" placeholder="Payroll month">
+              <div *ngIf="isFormSubmitted && form.payrollMonth.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="employeeId" class="form-label">Employee <span class="important">*</span></label>
+              <select name = "employeeId" class="form-control" id="employeeId" formControlName="employeeId"
+                      [ngClass]="{'is-invalid': isFormSubmitted && form.employeeId.errors}"
+                      placeholder="Select Employee">
+                <option value="" disabled>--Select Employee--</option>
+                <option [ngValue]="employee.id" *ngFor="let employee of employeeList">
+                  {{employee.fullName}}
+                </option>
+              </select>
+              <div *ngIf="isFormSubmitted && form.employeeId.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" [disabled]="validationForm.invalid">
+              <i class="feather icon-save"></i> Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
