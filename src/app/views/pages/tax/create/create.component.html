@@ -1,1 +1,70 @@
-<p>create works!</p>
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/tax-slab/view">Tax Brackets</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Create</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Tax Slab</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" (ngSubmit)="formSubmit()" [formGroup]="validationForm">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="lowerBound" class="form-label">Lower Bound <span class="important">*</span></label>
+              <input type="number" class="form-control" id="lowerBound" formControlName="lowerBound"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.lowerBound.errors}" placeholder="Enter Lower Bound">
+              <div *ngIf="isFormSubmitted && form.lowerBound.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label for="upperBound" class="form-label">Upper Bound <span class="important">*</span></label>
+              <input type="number" class="form-control" id="upperBound" formControlName="upperBound"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.upperBound.errors}" placeholder="Enter Upper Bound">
+              <div *ngIf="isFormSubmitted && form.upperBound.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="rate" class="form-label">Rate (%) <span class="important">*</span></label>
+              <input type="number" class="form-control" id="rate" formControlName="rate"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.rate.errors}" placeholder="Enter Rate">
+              <div *ngIf="isFormSubmitted && form.rate.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label for="fixedAmount" class="form-label">Fixed Amount <span class="important">*</span></label>
+              <input type="number" class="form-control" id="fixedAmount" formControlName="fixedAmount"
+                     [ngClass]="{'is-invalid': isFormSubmitted && form.fixedAmount.errors}" placeholder="Enter Fixed Amount">
+              <div *ngIf="isFormSubmitted && form.fixedAmount.errors?.required" class="invalid-feedback">
+                Required
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" [disabled]="validationForm.invalid">
+            <i class="feather icon-save"></i> Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -35,17 +35,17 @@ export class TaxService {
     )
   }
 
-  public create(lowerBound: number, upperBound:number,fixedAmount:number, rate:number ): Observable<any> {
+  public create(lowerBound: number, upperBound: number, fixedAmount: number, rate: number): Observable<any> {
+    const postData = JSON.stringify({
+      lowerBound: lowerBound, upperBound: upperBound, fixedAmount: fixedAmount, rate: rate
+    });
 
-    var postData = JSON.stringify({lowerBound: lowerBound, upperBound: upperBound, fixedAmount:fixedAmount,
-      rate:rate});
     return this.http.post<any>(`${this.completeBasePath}`, postData, this.requestOptions).pipe(
-      map((data) => {
-        return data;
-      }), catchError(error => {
-        return throwError('Something went wrong!');
+      map(data => data),
+      catchError(error => {
+        return throwError(() => new Error('Something went wrong!'));
       })
-    )
+    );
   }
 
   public viewWithPageParameters(page: Page): Observable<any> {

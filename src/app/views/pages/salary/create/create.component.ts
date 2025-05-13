@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PayrollService} from "../../../service/payroll.service";
 import {EmployeeService} from "../../../service/employee.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -15,7 +14,6 @@ export class CreateComponent implements OnInit {
 
   validationForm: FormGroup;
   isFormSubmitted: Boolean;
-  payrollMonth: string;
   employeeId: number;
   employeeList: any;
   basicSalary: number;

@@ -105,7 +105,7 @@
               </div>
             </div>
             <div class="mb-3 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <label for="jobTitle" class="form-label">Hire Date<span class="important">*</span></label>
+              <label for="jobTitle" class="form-label">Job Title<span class="important">*</span></label>
               <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle"
                      [ngClass]="{'is-invalid': isFormSubmitted && form.jobTitle.errors}" placeholder="Title">
               <div *ngIf="isFormSubmitted && form.jobTitle.errors?.required" class="invalid-feedback">
