@@ -13,15 +13,17 @@ export class EmployeeService {
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    // 'Authorization': `Bearer ${this.authToken}`,
-    // 'Authorisation': environment.loggedInUser,
     'accept': '*/*'
   });
   requestOptions = {headers: this.headers};
 
   private apiServerUrl = environment.apiBaseUrl;
   private employeeBaseUrl = "/payroll-management/v1/employee";
+  private employeeDeductionBaseUrl = "/payroll-management/v1/employee-deductions";
+  private employeeAllowanceBaseUrl = "/payroll-management/v1/employee-allowances";
   private completeBasePath = this.apiServerUrl + this.employeeBaseUrl;
+  private  completeBasePathForAllowances= this.apiServerUrl + this.employeeAllowanceBaseUrl
+  private  completeBasePathForDeductions= this.apiServerUrl + this.employeeDeductionBaseUrl
 
   constructor(private http: HttpClient) {
   }
@@ -78,6 +80,27 @@ export class EmployeeService {
     )
   }
 
+  public viewDeductionsByEmployeeId(employeeId: number): Observable<any> {
+
+    return this.http.get<any>(`${this.completeBasePathForDeductions}/employee-id/${employeeId}`, this.requestOptions).pipe(
+      map((data) => {
+        return data;
+      }), catchError(error => {
+        return throwError('Something went wrong!');
+      })
+    )
+  }
+  public viewAllowancesByEmployeeId(employeeId: number): Observable<any> {
+
+    return this.http.get<any>(`${this.completeBasePathForAllowances}/employee-id/${employeeId}`, this.requestOptions).pipe(
+      map((data) => {
+        return data;
+      }), catchError(error => {
+        return throwError('Something went wrong!');
+      })
+    )
+  }
+
   public delete(id: number): Observable<any> {
 
     return this.http.delete<any>(`${this.completeBasePath}/delete/${id}`, this.requestOptions).pipe(
@@ -89,4 +112,17 @@ export class EmployeeService {
     )
   }
 
+
+  public addDeduction( employeeId: number, deductionId: number, amount: number ): Observable<any> {
+
+    var postData = JSON.stringify({employeeId: employeeId,
+      deductionId:deductionId, amount:amount});
+    return this.http.post<any>(`${this.completeBasePathForDeductions}`, postData, this.requestOptions).pipe(
+      map((data) => {
+        return data;
+      }), catchError(error => {
+        return throwError('Something went wrong!');
+      })
+    )
+  }
 }

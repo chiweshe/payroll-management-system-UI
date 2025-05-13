@@ -72,3 +72,83 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employee Allowances Configurations</h4>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDeductionModal">
+          <i class="feather icon-users"></i> Configure Deductions
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row mt-4" *ngIf="employeeAllowances.length > 0">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Allowances</h4>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Allowance Name</th>
+            <th>Amount</th>
+            <th>Date Created</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let allowance of employeeAllowances">
+            <td>{{ allowance.allowanceName }}</td>
+            <td>{{ allowance.amount }}</td>
+            <td>{{ allowance.dateCreated | date: 'medium' }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employee Deductions Configurations</h4>
+        <a routerLink="/employee/add-deduction" class="btn btn-success">
+          <i class="feather icon-users"></i> Configure Deductions
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4" *ngIf="employeeDeductions.length > 0">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Deductions</h4>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Deduction Name</th>
+            <th>Amount</th>
+            <th>Date Created</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let deduction of employeeDeductions">
+            <td>{{ deduction.deductionName }}</td>
+            <td>{{ deduction.amount }}</td>
+            <td>{{ deduction.dateCreated | date: 'medium' }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

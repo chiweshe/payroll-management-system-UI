@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {LayoutModule} from "../../layout/layout.module";
+import { AddEmployeeAllowanceComponent } from './add-employee-allowance/add-employee-allowance.component';
+import { AddEmployeeDeductionComponent } from './add-employee-deduction/add-employee-deduction.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
         component: UpdateComponent,
       },
       {
+        path: 'add-allowance',
+        component: AddEmployeeAllowanceComponent,
+      },
+      {
+        path: 'add-deduction',
+        component: AddEmployeeDeductionComponent,
+      },
+      {
         path: 'view/:id',
         component: ViewSingleComponent,
       },
@@ -46,7 +56,9 @@ const routes: Routes = [
     CreateComponent,
     ViewComponent,
     ViewSingleComponent,
-    UpdateComponent
+    UpdateComponent,
+    AddEmployeeAllowanceComponent,
+    AddEmployeeDeductionComponent
   ],
   imports: [
     CommonModule,

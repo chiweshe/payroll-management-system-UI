@@ -7,6 +7,3 @@ export interface Allowance {
   dateLastModified: string
   taxable: boolean;
 }
-export interface EmployeeAllowance{
-
-}
