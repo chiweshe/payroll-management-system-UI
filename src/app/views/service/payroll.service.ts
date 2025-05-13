@@ -85,7 +85,7 @@ export class PayrollService {
 
   public createBulk(payrollMonth:string): Observable<any> {
 
-    var postData = JSON.stringify({epayrollMonth: payrollMonth });
+    var postData = JSON.stringify({payrollMonth: payrollMonth });
     return this.http.post<any>(`${this.completeBasePath}/bulk`, postData, this.requestOptions).pipe(
       map((data) => {
         return data;
