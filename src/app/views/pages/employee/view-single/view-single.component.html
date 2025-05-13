@@ -8,8 +8,8 @@
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Employee</h4>
+      <div class="card-body" *ngIf="employee != null">
+        <h4 class="card-title">Employee:  {{employee.fullName}}</h4>
       </div>
     </div>
   </div>
@@ -78,9 +78,9 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Employee Allowances Configurations</h4>
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDeductionModal">
-          <i class="feather icon-users"></i> Configure Deductions
-        </button>
+        <a [routerLink]="['/employee/add-allowance', employee.id]" class="btn btn-primary">
+          <i class="feather icon-users"></i> Configure Allowance
+        </a>
         </div>
       </div>
     </div>
@@ -97,6 +97,7 @@
             <th>Allowance Name</th>
             <th>Amount</th>
             <th>Date Created</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
@@ -104,6 +105,14 @@
             <td>{{ allowance.allowanceName }}</td>
             <td>{{ allowance.amount }}</td>
             <td>{{ allowance.dateCreated | date: 'medium' }}</td>
+            <td>
+              <a routerLink="" class="text-success" placement="top" ngbTooltip="View">
+                <i class="feather icon-eye "></i></a>
+              <a class="text-primary" placement="top" ngbTooltip="Update">
+                <i class="feather icon-edit "></i></a>
+              <a  class="text-danger" placement="top" ngbTooltip="Delete">
+                <i class="feather icon-trash-2"></i></a>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -117,7 +126,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Employee Deductions Configurations</h4>
-        <a routerLink="/employee/add-deduction" class="btn btn-success">
+        <a [routerLink]="['/employee/add-deduction', employee.id]" class="btn btn-danger">
           <i class="feather icon-users"></i> Configure Deductions
         </a>
       </div>
@@ -136,6 +145,7 @@
             <th>Deduction Name</th>
             <th>Amount</th>
             <th>Date Created</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
@@ -143,6 +153,15 @@
             <td>{{ deduction.deductionName }}</td>
             <td>{{ deduction.amount }}</td>
             <td>{{ deduction.dateCreated | date: 'medium' }}</td>
+            <td>
+            <td>
+              <a routerLink="" class="text-success" placement="top" ngbTooltip="View">
+                <i class="feather icon-eye "></i></a>
+              <a class="text-primary" placement="top" ngbTooltip="Update">
+                <i class="feather icon-edit "></i></a>
+              <a  class="text-danger" placement="top" ngbTooltip="Delete">
+                <i class="feather icon-trash-2"></i></a>
+            </td>
           </tr>
           </tbody>
         </table>

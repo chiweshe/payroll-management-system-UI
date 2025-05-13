@@ -26,7 +26,7 @@ export class AllowanceService {
 
   public viewList(): Observable<any> {
 
-    return this.http.get<any>(`${this.completeBasePath}`, this.requestOptions).pipe(
+    return this.http.get<any>(`${this.completeBasePath}/all`, this.requestOptions).pipe(
       map((data) => {
         return data;
       }), catchError(error => {

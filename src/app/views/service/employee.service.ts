@@ -112,17 +112,23 @@ export class EmployeeService {
     )
   }
 
-
-  public addDeduction( employeeId: number, deductionId: number, amount: number ): Observable<any> {
-
-    var postData = JSON.stringify({employeeId: employeeId,
-      deductionId:deductionId, amount:amount});
-    return this.http.post<any>(`${this.completeBasePathForDeductions}`, postData, this.requestOptions).pipe(
-      map((data) => {
-        return data;
-      }), catchError(error => {
-        return throwError('Something went wrong!');
+  public addDeduction(payload: { employeeId: number; deductionId: number; amount: number }): Observable<any> {
+    return this.http.post<any>(`${this.completeBasePathForDeductions}`, payload, this.requestOptions).pipe(
+      map(response => response),
+      catchError(error => {
+        console.error('Error adding deduction:', error);
+        return throwError(() => new Error('Something went wrong while adding the deduction.'));
       })
-    )
+    );
+  }
+
+  public addEmployeeAllowance(payload: { employeeId: number; allowanceId: number; amount: number }): Observable<any> {
+    return this.http.post<any>(`${this.completeBasePathForAllowances}`, payload, this.requestOptions).pipe(
+      map(response => response),
+      catchError(error => {
+        console.error('Error adding allowance:', error);
+        return throwError(() => new Error('Something went wrong while adding the allowance.'));
+      })
+    );
   }
 }

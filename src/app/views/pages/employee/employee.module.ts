@@ -32,13 +32,15 @@ const routes: Routes = [
         component: UpdateComponent,
       },
       {
-        path: 'add-allowance',
+        path: 'add-allowance/:employeeId',
         component: AddEmployeeAllowanceComponent,
       },
+
       {
-        path: 'add-deduction',
+        path: 'add-deduction/:employeeId',
         component: AddEmployeeDeductionComponent,
       },
+
       {
         path: 'view/:id',
         component: ViewSingleComponent,

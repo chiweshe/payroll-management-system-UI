@@ -1,1 +1,57 @@
-<p>add-employee-allowance works!</p>
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/employee/view">Employee</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Allowance</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add Employee Allowance</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" (ngSubmit)="formSubmit()" [formGroup]="validationForm">
+          <div class="mb-3">
+            <label for="allowanceId" class="form-label">Allowance <span class="important">*</span></label>
+            <select class="form-control" id="allowanceId" formControlName="allowanceId"
+                    [ngClass]="{'is-invalid': isFormSubmitted && form.allowanceId.errors}">
+              <option value="">---Select Allowance---</option>
+              <option *ngFor="let allowance of allowanceList" [value]="allowance.id">
+                {{ allowance.name }}
+              </option>
+            </select>
+            <div *ngIf="isFormSubmitted && form.allowanceId.errors?.required" class="invalid-feedback">
+              Required
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount <span class="important">*</span></label>
+            <input type="number" class="form-control" id="amount" formControlName="amount"
+                   [ngClass]="{'is-invalid': isFormSubmitted && form.amount.errors}" placeholder="Enter amount">
+            <div *ngIf="isFormSubmitted && form.amount.errors?.required" class="invalid-feedback">
+              Required
+            </div>
+            <div *ngIf="isFormSubmitted && form.amount.errors?.min" class="invalid-feedback">
+              Amount must be at least 1
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0"
+                    [disabled]="validationForm.invalid"><i class="feather icon-save"></i> Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
